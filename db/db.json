@@ -79,7 +79,7 @@
   ],
   "burgers": [
     {
-      "id": "b186",
+      "id": "c4ea",
       "nome": "Gustavo",
       "carne": "Alcatra",
       "pao": "Italiano Branco",
@@ -90,14 +90,24 @@
       "status": "Solicitado"
     },
     {
-      "id": "4a9a",
-      "nome": "Gustavo",
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
+      "id": "550e",
+      "nome": "Mariane",
+      "carne": "Picanha",
+      "pao": "Parmesão e Orégano",
       "opcionais": [
-        "Bacon"
+        "Bacon",
+        "Tomate",
+        "Pepino"
       ],
       "status": "Solicitado"
+    },
+    {
+      "id": "70a3",
+      "nome": "Maria",
+      "carne": "Veggie burger",
+      "pao": "Integral",
+      "opcionais": [],
+      "status": "Em produção"
     }
   ]
 }

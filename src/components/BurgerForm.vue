@@ -1,8 +1,8 @@
 <template>
     <div>
-        <p>Componente de Mensagem</p>
+        <Message :msg="msg" v-show="msg" />
         <div>
-            <form id="burger-form" @submit="createBurger">
+            <form id="burger-form" method="POST" @submit="createBurger">
                 <div class="input-container">
                     <label for="nome">Nome do cliente:</label>
                     <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome">
@@ -30,6 +30,8 @@
                 </div>
                 <div class="input-container">
                     <input type="submit" class="submit-btn" value="Criar meu Burger!">
+                    <br>
+                    <input type="button" class="limpar-btn" value="Limpar" @click="limparCampos()">
                 </div>
             </form>
         </div>
@@ -37,6 +39,8 @@
 </template>
 
 <script>
+    import Message from './Message.vue'
+
     export default {
         name: "BurgerForm",
         data() {
@@ -75,16 +79,22 @@
 
                 const req = await fetch("http://localhost:3000/burgers", {
                     method: "POST",
-                    headers: {"Content-type": "application/json"},
+                    headers: {"Content-Type": "application/json"},
                     body: dataJson
                 });
 
                 const res = await req.json();
                 
                 // Colocar mensagem de sistema
+                this.msg = `Pedido realizado com sucesso!!`;
 
                 //limpar mensagem
-
+                setTimeout(() => this.msg = "", 3000) ;
+                
+                //Limpar os campos
+                this.limparCampos();
+            },
+            async limparCampos() {
                 //Limpar os campos
                 this.nome = "";
                 this.carne = "";
@@ -94,6 +104,9 @@
         },
         mounted() {
             this.getIngredientes()
+        },
+        components: {
+            Message,
         }
     }
 </script>
@@ -149,7 +162,7 @@
         font-weight: bold;
     }
 
-    .submit-btn {
+    .submit-btn, .limpar-btn {
         background-color: #222;
         color: #fcba03;
         font-weight: bold;
@@ -160,7 +173,7 @@
         transition: .5s;
     }
 
-    .submit-btn:hover {
+    .submit-btn:hover, .limpar-btn:hover {
         background-color: transparent;
         color: #222;
     }
